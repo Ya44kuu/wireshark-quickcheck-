@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Filter by IP Address",
+    "category": "Basic Network",
+    "template": "ip.addr == {IP}",
+    "use_case": "Filters all packets sent to or received from a specific target IP address (both source and destination).",
+    "expected_output": "Displays only network traffic involving the specified IP, isolating it from background noise."
+  },
+  {
+    "title": "Filter by TCP Port",
+    "category": "Basic Network",
+    "template": "tcp.port == {PORT}",
+    "use_case": "Inspects traffic on a specific TCP port such as port 80 (HTTP), 443 (HTTPS), or a suspicious port.",
+    "expected_output": "Displays only TCP packets entering or leaving the specified port number."
+  },
+  {
+    "title": "Inspect HTTP POST Requests",
+    "category": "Web Analysis",
+    "template": "http.request.method == \"POST\"",
+    "use_case": "Captures data submissions sent to a web server, such as login credentials, form inputs, or exploit payloads.",
+    "expected_output": "Displays only HTTP POST requests, allowing you to use 'Follow HTTP Stream' to inspect the transmitted payload."
+  }
+]
