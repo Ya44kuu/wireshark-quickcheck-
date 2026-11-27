@@ -68,20 +68,26 @@ if __name__ == "__main__":
         print(f"[{index}] {item['template']}  -->  {item['use_case']}")
 
     choice = int(input("Select number :"))
-    if choice > len(results) :
-      print("Error")
+    if type(choice) == int and choice > 0:
+        
+      if choice > len(results) and choice > 0:
+        print("Error")
+        exit()
+
+      select = results[choice -1]
+
+      print(f"Expected: {select['expected_output']}\n")
+
+      params = find_placeholders(select['template'])
+
+      user_input = {}
+      for p in params:
+        val = input(f"Enter {p}: ")
+        user_input[p] = val
+
+      final_command = fill_template(select['template'],user_input)
+      print("\nReady to inject:", final_command)
+
+    else:
+      print("Error wrong choice");
       exit()
-
-    select = results[choice -1]
-
-    print(f"Expected: {select['expected_output']}\n")
-
-    params = find_placeholders(select['template'])
-
-    user_input = {}
-    for p in params:
-      val = input(f"Enter {p}: ")
-      user_input[p] = val
-
-    final_command = fill_template(select['template'],user_input)
-    print("\nReady to inject:", final_command)
